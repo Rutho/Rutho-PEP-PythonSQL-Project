@@ -133,7 +133,8 @@ def write_user_analytics(csv_file_path):
     with open(csv_file_path,"w",newline='') as csvfile:
 
         linewriter = csv.writer(csvfile)
-        
+        headers = ['userId','avgDuration','numCalls']
+        linewriter.writerow(headers)
         for k,v in datadict.items():
 
             linewriter.writerow([int(k)] + v)
