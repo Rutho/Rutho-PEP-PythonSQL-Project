@@ -151,7 +151,7 @@ def write_ordered_calls(csv_file_path):
     
     cursor.execute(colNameq)
     cols = cursor.fetchall()
-    cols = cols[1]
+    cols = [row[1] for rows in cols]
     print(cols)
     print("butterfry")
     cursor.execute(callsq)
