@@ -57,15 +57,12 @@ def load_and_clean_users(file_path):
 
     with open(file_path,newline='') as users:
 
-        data = csv.reader(users)
+        data = csv.reader(users,skipinitialspace=True)
         headers = next(data)
         expectlen = len(headers)
         for line in data:
 
             if(expectlen == len(line)):
-                print(expectlen)
-                print("WHAPBANG")
-                print(','.join(line))
                 sqlq = f"""INSERT INTO users({','.join(headers)}) VALUES(%s)""" % ','.join('?' * len(headers))
               
                 cursor.execute(sqlq,line)
