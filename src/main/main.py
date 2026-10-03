@@ -91,8 +91,7 @@ def load_and_clean_call_logs(file_path):
 
             if(expectlen == len(line) and all((word and not(word.isspace())) for word in line if line)):
 
-                print("going in")
-                print(line)
+                
 
                 sqlq = f"""INSERT INTO callLogs({','.join(headers)}) VALUES(%s)""" % ','.join('?' * len(headers))
                 
@@ -134,6 +133,9 @@ def write_user_analytics(csv_file_path):
     with open(csv_file_path,"a",newline='') as csvfile:
 
         linewriter = csv.writer(csvfile)
+        for k,v in datadict.items():
+
+            linewriter.writerow(list(k) + v)
 
 
 
