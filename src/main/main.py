@@ -161,11 +161,7 @@ def write_ordered_calls(csv_file_path):
 
         linewriter = csv.writer(csvfile)
         headers = ['userId','avgDuration','numCalls']
-        linewriter.writerow(headers)
-        for k,v in datadict.items():
-
-            linewriter.writerow([int(k)] + v)
-
+       
 
 
 # No need to touch the functions below!------------------------------------------
