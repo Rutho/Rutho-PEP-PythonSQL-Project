@@ -130,7 +130,7 @@ def write_user_analytics(csv_file_path):
 
     
 
-    with open(csv_file_path,"a",newline='') as csvfile:
+    with open(csv_file_path,"w",newline='') as csvfile:
 
         linewriter = csv.writer(csvfile)
         
