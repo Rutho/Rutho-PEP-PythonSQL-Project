@@ -63,7 +63,7 @@ def load_and_clean_users(file_path):
         for line in data:
 
             if(expectlen == len(line)):
-                cursor.execute("""INSERT INTO users VALUES (?)""",','.join(line))
+                cursor.execute(f"""INSERT INTO users VALUES ({','.join(line)})""")
 
 
 
