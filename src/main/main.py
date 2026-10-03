@@ -105,7 +105,7 @@ def write_user_analytics(csv_file_path):
 
 
     avgDurq = """SELECT userId, AVG((endTime-startTime)) FROM callLogs GROUP BY userId"""
-    callsq = """SELECT userId,COUNT(callId) FROM callLogs GROUP BY userId"""
+    callsq = """SELECT * FROM callLogs GROUP BY userId"""
 
 
     cursor.execute(avgDurq)
@@ -146,7 +146,25 @@ def write_user_analytics(csv_file_path):
 # Then, write the ordered callLogs to orderedCalls.csv
 def write_ordered_calls(csv_file_path):
 
-    print("TODO: write_ordered_calls")
+    callsq = """SELECT * FROM callLogs ORDER BY userId,startTime"""
+    colNameq = """PRAGMA table_info(callLogs)"""
+
+    cursor.execute(colNameq)
+    cols = cursor.fetchall()
+    cols = cols[1]
+    print(cols)
+    print("butterfry")
+    cursor.execute(callsq)
+    callsqlist = cursor.fetchall()
+
+     with open(csv_file_path,"w",newline='') as csvfile:
+
+        linewriter = csv.writer(csvfile)
+        headers = ['userId','avgDuration','numCalls']
+        linewriter.writerow(headers)
+        for k,v in datadict.items():
+
+            linewriter.writerow([int(k)] + v)
 
 
 
