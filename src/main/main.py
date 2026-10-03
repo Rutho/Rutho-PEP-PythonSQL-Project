@@ -70,6 +70,7 @@ def load_and_clean_users(file_path):
 
 
 
+
    
 
 
@@ -78,14 +79,18 @@ def load_and_clean_call_logs(file_path):
 
 
 
+
     with open(file_path,newline='') as users:
+
 
         data = csv.reader(users,skipinitialspace=True)
         headers = next(data)
         expectlen = len(headers)
         for line in data:
 
-            if(expectlen == len(line) and all(!(word.isspace()) for word in line if line)):
+
+            if(expectlen == len(line) and all(word.isspace() for word in line if line)):
+
                 sqlq = f"""INSERT INTO callLogs({','.join(headers)}) VALUES(%s)""" % ','.join('?' * len(headers))
                 
                 cursor.execute(sqlq,line)
