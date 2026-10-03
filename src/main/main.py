@@ -62,7 +62,7 @@ def load_and_clean_users(file_path):
         expectlen = len(headers)
         for line in data:
 
-            if(expectlen == len(line)):
+            if(expectlen == len(line) and all(word.isalpha() for word in line if line)):
                 sqlq = f"""INSERT INTO users({','.join(headers)}) VALUES(%s)""" % ','.join('?' * len(headers))
               
                 cursor.execute(sqlq,line)
