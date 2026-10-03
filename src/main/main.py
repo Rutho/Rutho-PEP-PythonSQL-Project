@@ -66,7 +66,7 @@ def load_and_clean_users(file_path):
                 print(expectlen)
                 print("WHAPBANG")
                 print(','.join(line))
-                sqlq = f"""INSERT INTO users(firstName,lastName) VALUES(?,?))"""
+                sqlq = f"""INSERT INTO users(firstName,lastName) VALUES(?,?)"""
               
                 cursor.execute(sqlq,line)
 
