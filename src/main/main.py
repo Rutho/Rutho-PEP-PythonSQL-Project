@@ -89,7 +89,7 @@ def load_and_clean_call_logs(file_path):
         for line in data:
 
 
-            if(expectlen == len(line) and all(not(word.isspace()) for word in line if line)):
+            if(expectlen == len(line) and all((word and not(word.isspace())) for word in line if line)):
 
                 print("going in")
                 print(line)
