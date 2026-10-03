@@ -135,7 +135,7 @@ def write_user_analytics(csv_file_path):
         linewriter = csv.writer(csvfile)
         for k,v in datadict.items():
 
-            linewriter.writerow(list(k) + v)
+            linewriter.writerow([k] + v)
 
 
 
