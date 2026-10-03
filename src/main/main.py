@@ -151,16 +151,18 @@ def write_ordered_calls(csv_file_path):
     
     cursor.execute(colNameq)
     cols = cursor.fetchall()
-    cols = [row[1] for row in cols]
-    print(cols)
-    print("butterfry")
+    headers = [row[1] for row in cols]
     cursor.execute(callsq)
     callsqlist = cursor.fetchall()
     
     with open(csv_file_path,"w",newline='') as csvfile:
 
         linewriter = csv.writer(csvfile)
-        headers = ['userId','avgDuration','numCalls']
+        linewriter.writerow(headers)
+
+        for row in callsqlist:
+
+            linewriter.writerow(row)
         
 
 
