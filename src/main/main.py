@@ -105,7 +105,7 @@ def write_user_analytics(csv_file_path):
 
 
     avgDurq = """SELECT userId, AVG((endTime-startTime)) FROM callLogs GROUP BY userId"""
-    callsq = """SELECT * FROM callLogs GROUP BY userId"""
+    callsq = """SELECT userId,COUNT(callId) FROM callLogs GROUP BY userId"""
 
 
     cursor.execute(avgDurq)
