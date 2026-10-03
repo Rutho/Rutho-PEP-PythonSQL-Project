@@ -91,6 +91,9 @@ def load_and_clean_call_logs(file_path):
 
             if(expectlen == len(line) and all(not(word.isspace()) for word in line if line)):
 
+                print("going in")
+                print(line)
+
                 sqlq = f"""INSERT INTO callLogs({','.join(headers)}) VALUES(%s)""" % ','.join('?' * len(headers))
                 
                 cursor.execute(sqlq,line)
