@@ -148,7 +148,7 @@ def write_ordered_calls(csv_file_path):
 
     callsq = """SELECT * FROM callLogs ORDER BY userId,startTime"""
     colNameq = """PRAGMA table_info(callLogs)"""
-
+    """
     cursor.execute(colNameq)
     cols = cursor.fetchall()
     cols = cols[1]
@@ -156,7 +156,7 @@ def write_ordered_calls(csv_file_path):
     print("butterfry")
     cursor.execute(callsq)
     callsqlist = cursor.fetchall()
-
+    """
      with open(csv_file_path,"w",newline='') as csvfile:
 
         linewriter = csv.writer(csvfile)
