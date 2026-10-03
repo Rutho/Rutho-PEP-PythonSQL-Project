@@ -119,12 +119,9 @@ def write_user_analytics(csv_file_path):
     
     for x,y in combinelist:
 
-        datadict[x] = []
+        datadict[x].get(x,[]) + [y]
 
-    for x,y in combinelist:
-
-        datadict[x].append(y)
-
+    
     print("meowster")
     print(datadict)
 
